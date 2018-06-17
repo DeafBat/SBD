@@ -23,13 +23,13 @@ public class Database {
 		}
 		
 		//Create some objects.
-		Item sword = new Item("Sword", 200, 100);
-		Item potion = new Item("Potion", 10, 1);
-		Item cloak = new Item("Cloak", 150, 50);
+		Item item1 = new Item("Sword", 200, 100);
+		Item item2 = new Item("Potion", 10, 1);
+		Item item3 = new Item("Cloak", 150, 50);
 		Character player1 = new Player("Qwerty", 50, 35, 123);
 		Character player2 = new Player("Wasd", 60, 25, 321);
 		Character monster1 = new Monster("Kobold", 20, 10, 9);
-		Character monster2 = new Monster("Troll", 30, 20, 22);
+		Character monster2 = new Monster("Troll", 30, 60, 22);
 		Character monster3 = new Monster("Gnome", 13, 8, 47);
 		Map map = new Map(1);
 		map.addCharacter(player1);
@@ -39,9 +39,9 @@ public class Database {
 		map.addCharacter(monster3);
 		
 		//Store them.
-		root.itemIndex.put(sword);
-		root.itemIndex.put(potion);
-		root.itemIndex.put(cloak);
+		root.itemIndex.put(item1);
+		root.itemIndex.put(item2);
+		root.itemIndex.put(item3);
 		root.mapIndex.put(map);
 		db.commit();
 		
@@ -61,11 +61,12 @@ public class Database {
 			System.out.println(item.toString());
 		}
 		
-		//Get all maps and run their toString Methods.
+		//Get all maps and run their toString and firstFightWithRest Methods.
 		Iterator<Map> j = root.mapIndex.iterator();
 		while (j.hasNext()) {
 			Map m = (Map)j.next();
 			System.out.println(m.toString());
+			m.firstFightWithRest();
 		}
 		
 		//Close the db again.

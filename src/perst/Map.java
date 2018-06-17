@@ -34,4 +34,22 @@ public class Map extends Persistent {
 		}
 		return s;
 	}
+	
+	//The first Character (assumed player) fights with the other characters in map.
+	//Fight  = compare strength and defense. s>=d - win. s < d - lose.
+	//If Player wins against Monster they get its experience worth added.
+	//Winning against other Players doesn't change anything.
+	public void firstFightWithRest() {
+		Player p = (Player) this.characters[0];
+		System.out.println(p.name + "'s lvl before fights: " + p.calculateLevel());
+		for (int i = 1; i < this.numOfCharacters; i++) {
+			Character c = this.characters[i];
+			if (c.getClass() == Monster.class) {
+				if (p.strength >= c.defense) {
+					p.xp += ((Monster) c).xpWorth;
+				}
+			}
+		}
+		System.out.println(p.name + "'s lvl after fights: " + p.calculateLevel());
+	}
 }
