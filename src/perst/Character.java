@@ -21,7 +21,7 @@ public abstract class Character extends Persistent {
 	}
 	
 	public String toString() {
-		return "Character:" + this.name + "~" + this.strength + "~" + this.defense;
+		return this.name + ": S(" + this.strength + ") D(" + this.defense + ")";
 	}
 
 }

@@ -21,10 +21,12 @@ public class Database {
 		Item sword = new Item("Sword", 200, 100);
 		Item potion = new Item("Potion", 10, 1);
 		Item cloak = new Item("Cloak", 150, 50);
+		Character player1 = new Player("Qwerty", 50, 35, 123);
 		
 		root.itemIndex.put(sword);
 		root.itemIndex.put(potion);
 		root.itemIndex.put(cloak);
+		root.characterIndex.put(player1);
 		
 		db.commit();
 		
@@ -36,6 +38,11 @@ public class Database {
 		while (i.hasNext()) {
 			Item item = (Item)i.next();
 			System.out.println(item.toString());
+		}
+		Iterator<Character> j = root.characterIndex.iterator();
+		while (j.hasNext()) {
+			Character character = (Character)j.next();
+			System.out.println(character.toString());
 		}
 		db.close();
 	}
