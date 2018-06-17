@@ -21,6 +21,6 @@ public class Item extends Persistent{
 	}
 	
 	public String toString() {
-		return name + ":" + buyPrice + "~" + sellPrice;
+		return "Item:" + name + "~" + this.buyPrice + "~" + this.sellPrice;
 	}
 }

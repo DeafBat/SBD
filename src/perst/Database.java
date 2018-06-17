@@ -22,9 +22,9 @@ public class Database {
 		Item potion = new Item("Potion", 10, 1);
 		Item cloak = new Item("Cloak", 150, 50);
 		
-		root.strKeyIndex.put(sword);
-		root.strKeyIndex.put(potion);
-		root.strKeyIndex.put(cloak);
+		root.itemIndex.put(sword);
+		root.itemIndex.put(potion);
+		root.itemIndex.put(cloak);
 		
 		db.commit();
 		
@@ -32,7 +32,7 @@ public class Database {
 		
 		db.open("test.dbs");
 		root = (MyRootClass)db.getRoot();
-		Iterator<Item> i = root.strKeyIndex.iterator();
+		Iterator<Item> i = root.itemIndex.iterator();
 		while (i.hasNext()) {
 			Item item = (Item)i.next();
 			System.out.println(item.toString());
