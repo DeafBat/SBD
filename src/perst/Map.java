@@ -5,32 +5,33 @@ import org.garret.perst.Persistent;
 public class Map extends Persistent {
 
 	public int id;
-	public Character mainPlayer;
-	public Character[] monsters;
-	public int numOfMonsters;
+	public Character[] characters;
+	public int numOfCharacters;
 	
 	public Map() {
 		this.id = 0;
-		this.mainPlayer = null;
-		this.monsters = null;
-		this.numOfMonsters = 0;
+		this.characters = null;
+		this.numOfCharacters = 0;
 	}
 	
-	public Map(int id, Character mainPlayer) {
+	public Map(int id) {
 		this.id = id;
-		this.mainPlayer = mainPlayer;
-		this.monsters = new Monster[5];
-		this.numOfMonsters = 0;
+		this.characters = new Character[5];
+		this.numOfCharacters = 0;
 	}
 	
-	public void addMonster(Character monster) {
-		if (this.numOfMonsters < 5) {
-			this.monsters[this.numOfMonsters++] = monster;
+	public void addCharacter(Character character) {
+		if (this.numOfCharacters < 5) {
+			this.characters[this.numOfCharacters++] = character;
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return this.id + ": " + this.mainPlayer.name + " vs " + this.numOfMonsters;
+		String s = this.id + ": \n";
+		for (int i = 0; i < this.numOfCharacters; i++) {
+			s += "  " + this.characters[i].toString() + "\n";
+		}
+		return s;
 	}
 }
