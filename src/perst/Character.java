@@ -20,6 +20,7 @@ public abstract class Character extends Persistent {
 		this.defense = defense;
 	}
 	
+	@Override
 	public String toString() {
 		return this.name + ": S(" + this.strength + ") D(" + this.defense + ")";
 	}

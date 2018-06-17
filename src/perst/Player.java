@@ -1,6 +1,7 @@
 package perst;
 
 public class Player extends Character {
+	
 	public int xp;
 	
 	public Player() {
@@ -17,6 +18,7 @@ public class Player extends Character {
 		return xp / 10;
 	}
 	
+	@Override
 	public String toString() {
 		return super.toString() + " Exp(" + this.xp + ")";
 	}

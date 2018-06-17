@@ -20,6 +20,7 @@ public class Item extends Persistent{
 		this.sellPrice = sellPrice;
 	}
 	
+	@Override
 	public String toString() {
 		return this.name + ": B(" + this.buyPrice + ") S(" + this.sellPrice + ")";
 	}

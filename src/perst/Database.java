@@ -22,11 +22,19 @@ public class Database {
 		Item potion = new Item("Potion", 10, 1);
 		Item cloak = new Item("Cloak", 150, 50);
 		Character player1 = new Player("Qwerty", 50, 35, 123);
+		Character monster1 = new Monster("Kobold", 20, 10, 9);
+		Character monster2 = new Monster("Troll", 30, 20, 22);
+		Character monster3 = new Monster("Gnome", 13, 8, 47);
+		Map map = new Map(1, player1);
+		map.addMonster(monster1);
+		map.addMonster(monster2);
+		map.addMonster(monster3);
+		
 		
 		root.itemIndex.put(sword);
 		root.itemIndex.put(potion);
 		root.itemIndex.put(cloak);
-		root.characterIndex.put(player1);
+		root.mapIndex.put(map);
 		
 		db.commit();
 		
@@ -39,10 +47,10 @@ public class Database {
 			Item item = (Item)i.next();
 			System.out.println(item.toString());
 		}
-		Iterator<Character> j = root.characterIndex.iterator();
+		Iterator<Map> j = root.mapIndex.iterator();
 		while (j.hasNext()) {
-			Character character = (Character)j.next();
-			System.out.println(character.toString());
+			Map m = (Map)j.next();
+			System.out.println(m.toString());
 		}
 		db.close();
 	}
