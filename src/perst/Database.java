@@ -9,7 +9,7 @@ public class Database {
 
 	public static void main(String[] args) {
 		
-		System.out.println("--==Perst Database==--");
+		System.out.println("--==Perst Database==--\n");
 		
 		//Create and open DB.
 		Storage db = StorageFactory.getInstance().createStorage();
@@ -23,9 +23,6 @@ public class Database {
 		}
 		
 		//Create some objects.
-		Item item1 = new Item("Sword", 200, 100);
-		Item item2 = new Item("Potion", 10, 1);
-		Item item3 = new Item("Cloak", 150, 50);
 		Character player1 = new Player("Qwerty", 50, 35, 123);
 		Character player2 = new Player("Wasd", 60, 25, 321);
 		Character monster1 = new Monster("Kobold", 20, 10, 9);
@@ -37,12 +34,19 @@ public class Database {
 		map.addCharacter(monster1);
 		map.addCharacter(monster2);
 		map.addCharacter(monster3);
+		Item item1 = new Item("Sword", 200, 100);
+		Item item2 = new Item("Potion", 10, 1);
+		Item item3 = new Item("Cloak", 150, 50);
+		Shop shop = new Shop(1, 300);
+		shop.buy(item1);
+		shop.buy(item2);
 		
 		//Store them.
+		root.mapIndex.put(map);
 		root.itemIndex.put(item1);
 		root.itemIndex.put(item2);
 		root.itemIndex.put(item3);
-		root.mapIndex.put(map);
+		root.shopIndex.put(shop);
 		db.commit();
 		
 		//Close the DB.
@@ -56,10 +60,13 @@ public class Database {
 		
 		//Get all items and run their toString method.
 		Iterator<Item> i = root.itemIndex.iterator();
+		Item item = null;
 		while (i.hasNext()) {
-			Item item = (Item)i.next();
+			item = (Item)i.next();
 			System.out.println(item.toString());
 		}
+		
+		System.out.println();
 		
 		//Get all maps and run their toString and firstFightWithRest Methods.
 		Iterator<Map> j = root.mapIndex.iterator();
@@ -67,6 +74,17 @@ public class Database {
 			Map m = (Map)j.next();
 			System.out.println(m.toString());
 			m.firstFightWithRest();
+		}
+		
+		System.out.println();
+		
+		//Get all maps and run their toString and firstFightWithRest Methods.
+		Iterator<Shop> k = root.shopIndex.iterator();
+		while (k.hasNext()) {
+			Shop s = (Shop)k.next();
+			System.out.println(s.toString());
+			s.buy(item);
+			System.out.println(s.toString());
 		}
 		
 		//Close the db again.

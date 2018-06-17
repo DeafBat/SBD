@@ -9,6 +9,7 @@ public class MyRootClass extends Persistent {
 	public FieldIndex<Item> itemIndex;
 	public FieldIndex<Character> characterIndex;
 	public FieldIndex<Map> mapIndex;
+	public FieldIndex<Shop> shopIndex;
 	
 	public MyRootClass() {}
 	
@@ -18,5 +19,6 @@ public class MyRootClass extends Persistent {
 		this.itemIndex = db.createFieldIndex(Item.class, "name", true);
 		this.characterIndex = db.createFieldIndex(Character.class, "name", true);
 		this.mapIndex = db.createFieldIndex(Map.class, "id", true);
+		this.shopIndex = db.createFieldIndex(Shop.class, "id", true);
 	}
 }
