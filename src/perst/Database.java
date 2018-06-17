@@ -83,7 +83,7 @@ public class Database {
 		while (k.hasNext()) {
 			Shop s = (Shop)k.next();
 			System.out.println(s.toString());
-			s.buy(item);
+			s.buy(item3);
 			System.out.println(s.toString());
 		}
 		
